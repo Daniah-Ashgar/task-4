@@ -1,0 +1,256 @@
+{
+  "intents": [
+    {
+      "intent": "Services",
+      "examples": [
+        {
+          "text": "in which directions can i move the robot"
+        },
+        {
+          "text": "how can you assist me"
+        },
+        {
+          "text": "what can you do for me"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "hi"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hey"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "yes",
+      "examples": [
+        {
+          "text": "yes"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "direction",
+      "examples": [
+        {
+          "text": "back"
+        },
+        {
+          "text": "right"
+        },
+        {
+          "text": "left"
+        },
+        {
+          "text": "front"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "no",
+      "examples": [
+        {
+          "text": "no"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "yes",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "which direction to you want?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#yes",
+      "dialog_node": "node_10_1594861398712",
+      "previous_sibling": "node_5_1594861240944"
+    },
+    {
+      "type": "standard",
+      "title": "no",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "bye"
+              },
+              {
+                "text": "thank you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#no",
+      "dialog_node": "node_5_1594861240944",
+      "previous_sibling": "node_8_1594860998388"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_10_1594861398712",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Greet",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hello,this is a chatbot,how can i help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Greetings",
+      "dialog_node": "node_4_1594859471495",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "services",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "i provide a service which is moving your robot to the direction that you choose, pick a direction "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Services",
+      "dialog_node": "node_2_1594859610227",
+      "previous_sibling": "node_4_1594859471495"
+    },
+    {
+      "type": "standard",
+      "title": "direction",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "mission succeed, do you need anything else?"
+              },
+              {
+                "text": "your robot has been moved, do you need anything else?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#direction",
+      "dialog_node": "node_8_1594860998388",
+      "previous_sibling": "node_2_1594859610227"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "welcome",
+  "language": "en",
+  "description": ""
+}
